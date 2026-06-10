@@ -1,3 +1,5 @@
+![Masthead — an editorial desk with newspapers, fountain pen, and coffee](public/images/flat-layout-01.jpg)
+
 # Masthead — Social Media Studio
 
 A personal-brand command center for planning, scheduling, and monitoring social
