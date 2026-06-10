@@ -2,6 +2,11 @@
 
 # Masthead — Social Media Studio
 
+[![Deploy to GitHub Pages](https://github.com/robert-laws/social-media-organizer/actions/workflows/deploy.yml/badge.svg)](https://github.com/robert-laws/social-media-organizer/actions/workflows/deploy.yml)
+[![Live site](https://img.shields.io/badge/live_site-masthead-B4500F?style=flat&logo=githubpages&logoColor=white)](https://robert-laws.github.io/social-media-organizer/)
+
+**→ [Open the app](https://robert-laws.github.io/social-media-organizer/)**
+
 A personal-brand command center for planning, scheduling, and monitoring social
 media across **X, LinkedIn, Instagram, Facebook, and YouTube** — built around
 three content pillars: *AI*, *AI in Higher Ed & Libraries*, and
