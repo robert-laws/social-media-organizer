@@ -6,6 +6,7 @@ import { uid, todayISO, fmtDate } from '../lib/util'
 import PageHead from '../components/PageHead'
 import { StatusChip, PlatformDots } from '../components/Chips'
 import PlatformIcon from '../components/Icons'
+import { EmptyArt } from '../components/Art'
 
 export default function Composer() {
   const { posts, addPost, updatePost, deletePost, settings } = useStore()
@@ -59,7 +60,7 @@ export default function Composer() {
         <div className="card" style={{ overflow: 'hidden', maxHeight: '72vh', overflowY: 'auto' }}>
           {list.length === 0 ? (
             <div className="empty">
-              <span className="empty-glyph">blank page</span>
+              <EmptyArt width={120} />
               No posts yet — start one.
             </div>
           ) : (
@@ -95,8 +96,8 @@ export default function Composer() {
             }}
           />
         ) : (
-          <div className="card card-pad empty" style={{ minHeight: 300 }}>
-            <span className="empty-glyph">pick a draft</span>
+          <div className="card card-pad empty" style={{ minHeight: 300, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <EmptyArt />
             Select a post from the list, or create a new one.
           </div>
         )}
@@ -258,6 +259,25 @@ function Editor({ post, settings, onChange, onDelete }) {
           )}
         </>
       )}
+
+      <div className="field">
+        <label>Cover image URL <span style={{ textTransform: 'none', letterSpacing: 0 }}>(optional — shown on channel pages)</span></label>
+        <div className="flex">
+          {post.image && (
+            <img
+              src={post.image}
+              alt=""
+              style={{ width: 72, height: 48, objectFit: 'cover', borderRadius: 6, border: '1px solid var(--line)' }}
+            />
+          )}
+          <input
+            type="url"
+            value={post.image || ''}
+            placeholder="https://… (upload to your repo's public/images/ or paste any image URL)"
+            onChange={(e) => onChange({ image: e.target.value })}
+          />
+        </div>
+      </div>
 
       <div className="field">
         <label>Private notes</label>

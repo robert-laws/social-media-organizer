@@ -7,6 +7,7 @@ import PageHead from '../components/PageHead'
 import { Sparkline } from '../components/Chart'
 import { PillarChip, StatusChip, PlatformDots } from '../components/Chips'
 import PlatformIcon from '../components/Icons'
+import { EmptyArt } from '../components/Art'
 
 export default function Dashboard() {
   const { posts, ideas, metrics, settings, connected } = useStore()
@@ -105,7 +106,7 @@ export default function Dashboard() {
           </div>
           {upcoming.length === 0 ? (
             <div className="empty">
-              <span className="empty-glyph">empty desk</span>
+              <EmptyArt />
               Nothing scheduled this week — pull something from the <Link to="/ideas">idea backlog</Link>.
             </div>
           ) : (

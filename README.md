@@ -47,6 +47,28 @@ get full history and backup for free.
 only ever sent to `api.github.com`. Don't paste it on shared computers, and
 scope it to the single data repo so the blast radius is minimal.
 
+## Adding your own images
+
+Images (profile photo, post cover images) are referenced by URL. Two ways to
+get a URL:
+
+**Option A — host in this repo (recommended):**
+
+1. On GitHub, open this repo → `public/images/` folder.
+2. **Add file → Upload files** → drag your image(s) in → **Commit changes**.
+3. Wait ~1 minute for the site to redeploy, then use the URL
+   `https://<username>.github.io/social-media-organizer/images/<filename>`.
+
+This repo is public, so only upload images you'd post publicly anyway.
+
+**Option B — any external URL:** your GitHub avatar
+(`https://github.com/<username>.png`), a LinkedIn image URL, an Unsplash link,
+etc. Paste it directly into the app.
+
+Where URLs go in the app:
+- **Settings → Profile photo URL** — shown on the dashboard
+- **Composer → Cover image URL** — thumbnail on that post's channel-page card
+
 ## Local development
 
 ```bash

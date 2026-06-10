@@ -5,6 +5,7 @@ import { IDEA_COLUMNS, PILLARS } from '../lib/constants'
 import { uid, todayISO } from '../lib/util'
 import PageHead from '../components/PageHead'
 import { PillarChip } from '../components/Chips'
+import { PillarArt } from '../components/Art'
 
 export default function Ideas() {
   const { ideas, addIdea, updateIdea, deleteIdea, addPost } = useStore()
@@ -51,14 +52,26 @@ export default function Ideas() {
         <button className="btn btn-primary" onClick={() => setEditing('new')}>+ Capture idea</button>
       </PageHead>
 
-      <div className="toolbar">
-        <button className={`pill-toggle${filter === null ? ' on' : ''}`} onClick={() => setFilter(null)}>All pillars</button>
-        {PILLARS.map((p) => (
-          <button key={p.id} className={`pill-toggle${filter === p.id ? ' on' : ''}`} onClick={() => setFilter(filter === p.id ? null : p.id)}>
-            <span className="chip-dot" style={{ background: p.color }} />
-            {p.name}
-          </button>
-        ))}
+      <div className="grid rise" style={{ gridTemplateColumns: 'repeat(3, 1fr)', marginBottom: 20 }}>
+        {PILLARS.map((p) => {
+          const count = ideas.filter((i) => i.pillar === p.id).length
+          const active = filter === p.id
+          return (
+            <button
+              key={p.id}
+              className="card card-pad pillar-hero"
+              style={{ borderColor: active ? p.color : undefined }}
+              onClick={() => setFilter(active ? null : p.id)}
+              title={active ? 'Show all pillars' : `Filter to ${p.name}`}
+            >
+              <PillarArt id={p.id} size={64} />
+              <span>
+                <span className="ph-name">{p.name}</span>
+                <span className="ph-count">{count} idea{count === 1 ? '' : 's'}{active ? ' · filtering' : ''}</span>
+              </span>
+            </button>
+          )
+        })}
       </div>
 
       <div className="kanban rise">

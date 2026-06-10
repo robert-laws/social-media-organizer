@@ -8,6 +8,7 @@ import { LineChart } from '../components/Chart'
 import { PillarChip, StatusChip } from '../components/Chips'
 import Embed from '../components/Embed'
 import PlatformIcon from '../components/Icons'
+import { EmptyArt } from '../components/Art'
 
 export default function Platform() {
   const { id } = useParams()
@@ -103,7 +104,7 @@ export default function Platform() {
       <div className="card-title" style={{ marginTop: 28 }}>Published on {platform.name}</div>
       {published.length === 0 ? (
         <div className="card empty">
-          <span className="empty-glyph">nothing live yet</span>
+          <EmptyArt />
           When you publish a post, paste its URL in the composer's "{platform.name}" tab and it will appear here
           {['x', 'instagram', 'facebook', 'youtube'].includes(id) ? ' as a live embed.' : '.'}
         </div>
@@ -113,6 +114,7 @@ export default function Platform() {
             const url = p.variants?.[id]?.url
             return (
               <div key={p.id} className="card" style={{ overflow: 'hidden' }}>
+                {p.image && <img className="cover-thumb" src={p.image} alt="" />}
                 <div className="card-pad" style={{ paddingBottom: 12 }}>
                   <div className="flex-between" style={{ marginBottom: 6 }}>
                     <span style={{ fontWeight: 600, fontSize: 13.5 }}>{p.title || 'Untitled'}</span>
