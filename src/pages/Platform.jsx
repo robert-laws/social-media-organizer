@@ -7,6 +7,7 @@ import PageHead from '../components/PageHead'
 import { LineChart } from '../components/Chart'
 import { PillarChip, StatusChip } from '../components/Chips'
 import Embed from '../components/Embed'
+import PlatformIcon from '../components/Icons'
 
 export default function Platform() {
   const { id } = useParams()
@@ -36,7 +37,25 @@ export default function Platform() {
     <div>
       <PageHead
         kicker="Channel"
-        title={<><em>{platform.name}</em></>}
+        title={
+          <span className="flex" style={{ gap: 14 }}>
+            <span
+              style={{
+                width: 52,
+                height: 52,
+                borderRadius: 14,
+                background: platform.color,
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: 'var(--shadow)',
+              }}
+            >
+              <PlatformIcon id={id} size={28} color="#fff" />
+            </span>
+            <em>{platform.name}</em>
+          </span>
+        }
         sub={platform.hint}
       >
         {handle ? (

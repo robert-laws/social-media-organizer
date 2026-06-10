@@ -137,6 +137,27 @@ export default function Settings() {
               onChange={(e) => updateSettings({ displayName: e.target.value })}
             />
           </div>
+          <div className="field">
+            <label>Profile photo URL</label>
+            <div className="flex">
+              {settings.avatarUrl && (
+                <img
+                  src={settings.avatarUrl}
+                  alt=""
+                  style={{ width: 38, height: 38, borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--line)' }}
+                />
+              )}
+              <input
+                type="url"
+                value={settings.avatarUrl || ''}
+                placeholder="https://github.com/your-username.png"
+                onChange={(e) => updateSettings({ avatarUrl: e.target.value })}
+              />
+            </div>
+            <span className="help">
+              Shown on the dashboard. Your GitHub avatar works out of the box: <span className="mono-snippet">https://github.com/{config?.owner || 'your-username'}.png</span> — or paste any image URL.
+            </span>
+          </div>
           {PLATFORMS.map((p) => (
             <div key={p.id} className="field">
               <label style={{ display: 'flex', alignItems: 'center', gap: 6 }}>

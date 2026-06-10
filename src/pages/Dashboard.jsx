@@ -6,6 +6,7 @@ import { todayISO, addDays, fmtNum, fmtDateLong } from '../lib/util'
 import PageHead from '../components/PageHead'
 import { Sparkline } from '../components/Chart'
 import { PillarChip, StatusChip, PlatformDots } from '../components/Chips'
+import PlatformIcon from '../components/Icons'
 
 export default function Dashboard() {
   const { posts, ideas, metrics, settings, connected } = useStore()
@@ -30,12 +31,31 @@ export default function Dashboard() {
   const pillarMax = Math.max(...pillarCounts.map((p) => p.count), 1)
 
   const name = settings.displayName ? `, ${settings.displayName.split(' ')[0]}` : ''
+  const avatar = settings.avatarUrl
 
   return (
     <div>
       <PageHead
         kicker={fmtDateLong(today)}
-        title={<>The week <em>ahead</em>{name}.</>}
+        title={
+          <span className="flex" style={{ gap: 16 }}>
+            {avatar && (
+              <img
+                src={avatar}
+                alt=""
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '2px solid var(--card)',
+                  boxShadow: 'var(--shadow-lift)',
+                }}
+              />
+            )}
+            <span>The week <em>ahead</em>{name}.</span>
+          </span>
+        }
         sub="Your personal press office — what's queued, what's growing, and where the pillars stand."
       >
         <Link to="/composer?new=1" className="btn btn-primary">+ New post</Link>
@@ -62,7 +82,7 @@ export default function Dashboard() {
           return (
             <Link key={p.id} to={`/platform/${p.id}`} className="card stat" style={{ textDecoration: 'none' }}>
               <div className="stat-platform">
-                <span className="chip-dot" style={{ background: p.color, width: 8, height: 8 }} />
+                <PlatformIcon id={p.id} size={13} />
                 {p.name}
               </div>
               <div className="stat-num">{fmtNum(cur)}</div>

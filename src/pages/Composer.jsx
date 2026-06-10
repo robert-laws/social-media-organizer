@@ -5,6 +5,7 @@ import { PLATFORMS, PLATFORM_MAP, PILLARS, STATUSES } from '../lib/constants'
 import { uid, todayISO, fmtDate } from '../lib/util'
 import PageHead from '../components/PageHead'
 import { StatusChip, PlatformDots } from '../components/Chips'
+import PlatformIcon from '../components/Icons'
 
 export default function Composer() {
   const { posts, addPost, updatePost, deletePost, settings } = useStore()
@@ -191,7 +192,7 @@ function Editor({ post, settings, onChange, onDelete }) {
         <div className="flex wrap">
           {PLATFORMS.map((p) => (
             <button key={p.id} className={`pill-toggle${activePlatforms.includes(p.id) ? ' on' : ''}`} onClick={() => togglePlatform(p.id)}>
-              <span className="chip-dot" style={{ background: p.color }} />
+              <PlatformIcon id={p.id} size={13} color="currentColor" />
               {p.name}
             </button>
           ))}
@@ -211,7 +212,7 @@ function Editor({ post, settings, onChange, onDelete }) {
               const len = (post.variants?.[id]?.text || '').length
               return (
                 <button key={id} className={`variant-tab${tab === id ? ' active' : ''}`} onClick={() => setTab(id)}>
-                  <span className="chip-dot" style={{ background: p.color }} />
+                  <PlatformIcon id={id} size={13} />
                   {p.name}
                   {len > 0 && <span className={`char-counter${len > p.limit ? ' over' : ''}`}>{len}</span>}
                 </button>

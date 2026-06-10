@@ -4,6 +4,7 @@ import { PLATFORMS, METRIC_FIELDS } from '../lib/constants'
 import { todayISO, fmtDate, fmtNum } from '../lib/util'
 import PageHead from '../components/PageHead'
 import { LineChart } from '../components/Chart'
+import PlatformIcon from '../components/Icons'
 
 export default function Metrics() {
   const { metrics, addSnapshot, deleteSnapshot } = useStore()
@@ -59,7 +60,7 @@ export default function Metrics() {
           {PLATFORMS.map((p) => (
             <div key={p.id} className="field" style={{ marginBottom: 0 }}>
               <label style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <span className="chip-dot" style={{ background: p.color }} />
+                <PlatformIcon id={p.id} size={12} />
                 {p.short} {METRIC_FIELDS[p.id].label}
               </label>
               <input
@@ -87,7 +88,7 @@ export default function Metrics() {
             <div key={platform.id} className="card card-pad">
               <div className="card-title">
                 <span className="flex" style={{ gap: 7 }}>
-                  <span className="chip-dot" style={{ background: platform.color }} />
+                  <PlatformIcon id={platform.id} size={13} />
                   {platform.name} · {METRIC_FIELDS[platform.id].label}
                 </span>
                 <span className="mono">

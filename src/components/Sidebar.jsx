@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { PLATFORMS } from '../lib/constants'
 import { useStore } from '../lib/store'
+import PlatformIcon from './Icons'
 
 const SYNC_LABEL = {
   local: 'Local only',
@@ -43,7 +44,7 @@ export default function Sidebar() {
           to={`/platform/${p.id}`}
           className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
         >
-          <span className="nav-dot" style={{ background: p.color, opacity: 0.55 }} />
+          <PlatformIcon id={p.id} size={14} color="currentColor" style={{ opacity: 0.75 }} />
           {p.name}
         </NavLink>
       ))}
