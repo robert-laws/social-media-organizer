@@ -73,7 +73,41 @@ what the loop produces. Keep that line clear — the loop *makes* drafts; it nev
 
 ## The Site
 
-> On first run in a fresh session: read the existing site code and replace this section with
-> a short summary of its stack, structure, build/deploy steps, and conventions, so future
-> sessions are oriented without re-reading everything. Note which folders are part of the
-> deploy build so loop output stays out of it.
+**Masthead Social Studio** — a single-page social-media planning dashboard.
+
+**Stack:** React 18 + React Router 6, built with Vite 6. No backend of its own: the app
+talks to GitHub directly. User config (PAT + `owner`/`repo`) lives in `localStorage`, and
+all content (`data/posts.json`, `data/ideas.json`, `data/metrics.json`, `data/settings.json`)
+is read/written via the GitHub Contents API to a **separate private data repo** — see
+`src/lib/github.js` and `src/lib/store.jsx`. This repo holds only the app code; the user's
+actual content lives elsewhere.
+
+**Structure:**
+- `index.html` → `src/main.jsx` → `src/App.jsx` (route table; client-side routing).
+- `src/pages/` — Dashboard, Calendar, Ideas, Composer, Metrics, Platform (`/platform/:id`),
+  Settings.
+- `src/components/` — Sidebar, PageHead, Chart, Chips, Embed, Art, Icons.
+- `src/lib/` — `store.jsx` (context + GitHub-backed data store), `github.js` (API client),
+  `constants.js`, `sample.js`, `util.js`.
+- `src/styles.css` — global styles. Fonts loaded from Google Fonts in `index.html`.
+- `public/` — static assets copied verbatim (images, `404.html` for Pages deep-link fallback).
+
+**Build / deploy:**
+- `npm run dev` (local), `npm run build` → `dist/`, `npm run preview` (serve the build).
+- CI: `.github/workflows/deploy.yml` runs on push to `main` — `npm ci && npm run build`, then
+  publishes **`dist/` only** to GitHub Pages.
+- `vite.config.js` sets `base: '/social-media-organizer/'` to match the repo name (project
+  Pages site). **If the repo is renamed, update `base`** or assets 404.
+
+**What's in the deploy build (and what's not):** Vite bundles **only** `index.html`, `src/`,
+and `public/` into `dist/`; the workflow uploads `dist/` and nothing else. The loop folders —
+`drafts/`, `state/`, `inbox/` (and `ideas/`, `tools/`, `.claude/`) — are **not Vite inputs**,
+so writing to them **never changes the deployed artifact**. The loop also commits on `claude/`
+branches (PR-based review), and deploy triggers only on `main`, so loop runs don't reach the
+deploy path at all.
+
+> ⚠️ Caveat: the workflow has **no `paths:` filter**, so a commit that touches *only* loop
+> folders *directly on `main`* would still run the workflow — it just rebuilds an identical
+> `dist/`. That's wasted CI, not a content change. To avoid even that, keep loop commits on
+> `claude/` branches (as the golden rules already require), or add a `paths-ignore:` for the
+> loop folders to `deploy.yml`.
