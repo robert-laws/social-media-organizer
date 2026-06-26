@@ -1,0 +1,15 @@
+{
+  "seeds": [
+    {
+      "id": "seed-001",
+      "idea": "Libraries should teach transferable AI judgment, not tool-specific prompt tricks",
+      "image": null,
+      "platforms": {
+        "x":         { "status": "todo", "draft": null, "attempts": 0 },
+        "instagram": { "status": "todo", "draft": null, "attempts": 0 },
+        "facebook":  { "status": "todo", "draft": null, "attempts": 0 },
+        "linkedin":  { "status": "todo", "draft": null, "attempts": 0 }
+      }
+    }
+  ]
+}
