@@ -12,6 +12,7 @@ on:
       - '.claude/**'
       - 'CLAUDE.md'
       - 'voice-profile.md'
+      - 'kickoff.md'
   workflow_dispatch:
 
 permissions:
