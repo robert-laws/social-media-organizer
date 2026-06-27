@@ -11,6 +11,7 @@ on:
       - 'tools/**'
       - '.claude/**'
       - 'CLAUDE.md'
+      - 'voice-profile.md'
   workflow_dispatch:
 
 permissions:
