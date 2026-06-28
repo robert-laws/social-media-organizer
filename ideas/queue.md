@@ -1,0 +1,3 @@
+# Idea queue (one seed per line; image path optional)
+
+- seed-001: Libraries should teach transferable AI judgment, not tool-specific prompt tricks.

@@ -3,6 +3,16 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'drafts/**'
+      - 'state/**'
+      - 'inbox/**'
+      - 'ideas/**'
+      - 'tools/**'
+      - '.claude/**'
+      - 'CLAUDE.md'
+      - 'voice-profile.md'
+      - 'kickoff.md'
   workflow_dispatch:
 
 permissions:
