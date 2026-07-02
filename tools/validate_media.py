@@ -20,6 +20,8 @@ ASPECTS = {
 TYPES = {"image", "video", "audio"}
 MAX_PROMPT = 1500
 MAX_ALT = 1000
+MAX_OIT_ITEMS = 2    # on_image_text: short label(s) only, never paragraphs
+MAX_OIT_CHARS = 30   # per entry; short strings render far more reliably
 
 def check(platform, b):
     if platform not in ASPECTS:
@@ -47,6 +49,20 @@ def check(platform, b):
             reasons.append("missing alt_text (accessibility)")
         elif len(alt) > MAX_ALT:
             reasons.append(f"alt_text {len(alt)} > {MAX_ALT}")
+        oit = b.get("on_image_text", [])
+        if oit:
+            if not isinstance(oit, list) or \
+               not all(isinstance(s, str) for s in oit):
+                reasons.append("on_image_text must be a list of strings")
+            else:
+                if len(oit) > MAX_OIT_ITEMS:
+                    reasons.append(f"on_image_text {len(oit)} entries > {MAX_OIT_ITEMS}")
+                for s in oit:
+                    if len(s) > MAX_OIT_CHARS:
+                        reasons.append(f"on_image_text entry {len(s)} chars > {MAX_OIT_CHARS}: {s[:34]!r}")
+                    elif s.strip() and s.lower() not in prompt.lower():
+                        reasons.append(f"on_image_text {s!r} not present in prompt "
+                                       "(the words to render must appear verbatim)")
     if typ == "audio" and not b.get("duration_sec"):
         reasons.append("audio brief needs duration_sec")
     return reasons

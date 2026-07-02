@@ -22,7 +22,8 @@ RULES = {
         "needs_cta": True,
     },
     "facebook": {
-        "max_chars": 500,            # engagement sweet spot, not a hard cap
+        "min_chars": 300,            # the ~300-500 engagement sweet spot,
+        "max_chars": 500,            # enforced as a hard gate on both ends
         "max_hashtags": 2,
         "needs_cta": True,
     },
@@ -46,6 +47,8 @@ def check(platform, text):
     n = len(text)
     if "max_chars" in r and n > r["max_chars"]:
         reasons.append(f"length {n} > {r['max_chars']}")
+    if "min_chars" in r and n < r["min_chars"]:
+        reasons.append(f"length {n} < {r['min_chars']}")
     h = count_hashtags(text)
     if "max_hashtags" in r and h > r["max_hashtags"]:
         reasons.append(f"hashtags {h} > {r['max_hashtags']}")
@@ -58,9 +61,11 @@ def check(platform, text):
         if len(first) > 120:
             reasons.append("first line too long to be a hook")
     if "hook_before_chars" in r:
+        # A hook = a sentence end OR a paragraph break WITHIN the fold window.
+        # (Previously any newline anywhere in the text skipped this check entirely,
+        # so every multi-paragraph post bypassed it.)
         fold = text[: r["hook_before_chars"]]
-        if "\n" not in text and len(text) > r["hook_before_chars"] and \
-           not re.search(r"[.?!]", fold):
+        if len(text) > r["hook_before_chars"] and not re.search(r"[.?!\n]", fold):
             reasons.append("no hook before the LinkedIn fold (~210 chars)")
     for pat in r.get("banned", []):
         if re.search(pat, text, re.I):

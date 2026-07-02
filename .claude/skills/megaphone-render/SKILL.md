@@ -32,9 +32,20 @@ validated briefs; this skill turns those briefs into images while you're at the 
 6. Invoke the megaphone-reviewer agent in IMAGE mode on both candidates. It runs
    tools/validate_image.py (existence, non-zero, ratio) and then OPENS each image to judge
    message match, garbled/incorrect on-image text, on-brand styling, and safety.
-7. Keep the reviewer's winning PASS. Save it as drafts/<seed>/<platform>.png (crop to
-   publish_ratio if it differs from gen_ratio). Update state/content-state.json:
-   media.render = { status: ready_for_review, file, publish_ratio }.
+7. Keep the reviewer's winning PASS. Save it as drafts/<seed>/<platform>.png. If
+   publish_ratio differs from gen_ratio, crop deterministically — never by hand:
+     python3 tools/crop.py drafts/<seed>/<platform>.png <publish_ratio> \
+             drafts/<seed>/<platform>.publish.png
+   (center crop; the tool verifies its own output ratio and fails loudly).
+   Then VIEW the crop to confirm the composition survived the trim.
+8. Persist the handoff:
+   - state/content-state.json: media.render = { status: ready_for_review, file,
+     publish_ratio, publish_file } — publish_file is the cropped file when one exists,
+     else the render itself.
+   - drafts/<seed>/PUBLISH.md: add/refresh this platform's section — final post text,
+     the publish image file, the alt_text from the brief, and platform-specific posting
+     notes. This manifest is what the human ships from; alt text must not stay buried
+     in the brief.
 
 ## Stop conditions (the credit-blowout guards)
 - If NEITHER candidate passes within the cap, move the brief to inbox/ for hand work.
