@@ -5,19 +5,68 @@
       "idea": "Libraries should teach transferable AI judgment, not tool-specific prompt tricks",
       "image": null,
       "platforms": {
-        "x":         { "status": "ready_for_review", "draft": "drafts/seed-001/x.md", "attempts": 1,
-          "media": { "status": "ready_for_review", "brief": "drafts/seed-001/x.media.md",
-                     "render": { "status": "ready_for_review", "file": "drafts/seed-001/x.png", "publish_ratio": "16:9" } } },
-        "instagram": { "status": "ready_for_review", "draft": "drafts/seed-001/instagram.md", "attempts": 1,
-          "media": { "status": "ready_for_review", "brief": "drafts/seed-001/instagram.media.md",
-                     "render": { "status": "ready_for_review", "file": "drafts/seed-001/instagram.png", "publish_ratio": "4:5" } } },
-        "facebook":  { "status": "ready_for_review", "draft": "drafts/seed-001/facebook.md", "attempts": 1,
-          "media": { "status": "ready_for_review", "brief": "drafts/seed-001/facebook.media.md",
-                     "render": { "status": "ready_for_review", "file": "drafts/seed-001/facebook.png", "publish_ratio": "1.91:1" } } },
-        "linkedin":  { "status": "ready_for_review", "draft": "drafts/seed-001/linkedin.md", "attempts": 1,
-          "media": { "status": "ready_for_review", "brief": "drafts/seed-001/linkedin.media.md",
-                     "render": { "status": "ready_for_review", "file": "drafts/seed-001/linkedin.png", "publish_ratio": "1.91:1" } } }
-      }
+        "x": {
+          "status": "ready_for_review",
+          "draft": "drafts/seed-001/x.md",
+          "attempts": 1,
+          "media": {
+            "status": "ready_for_review",
+            "brief": "drafts/seed-001/x.media.md",
+            "render": {
+              "status": "ready_for_review",
+              "file": "drafts/seed-001/x.png",
+              "publish_ratio": "16:9",
+              "publish_file": "drafts/seed-001/x.png"
+            }
+          }
+        },
+        "instagram": {
+          "status": "ready_for_review",
+          "draft": "drafts/seed-001/instagram.md",
+          "attempts": 1,
+          "media": {
+            "status": "ready_for_review",
+            "brief": "drafts/seed-001/instagram.media.md",
+            "render": {
+              "status": "ready_for_review",
+              "file": "drafts/seed-001/instagram.png",
+              "publish_ratio": "4:5",
+              "publish_file": "drafts/seed-001/instagram.png"
+            }
+          }
+        },
+        "facebook": {
+          "status": "ready_for_review",
+          "draft": "drafts/seed-001/facebook.md",
+          "attempts": 1,
+          "media": {
+            "status": "ready_for_review",
+            "brief": "drafts/seed-001/facebook.media.md",
+            "render": {
+              "status": "ready_for_review",
+              "file": "drafts/seed-001/facebook.png",
+              "publish_ratio": "1.91:1",
+              "publish_file": "drafts/seed-001/facebook.publish.png"
+            }
+          }
+        },
+        "linkedin": {
+          "status": "ready_for_review",
+          "draft": "drafts/seed-001/linkedin.md",
+          "attempts": 1,
+          "media": {
+            "status": "ready_for_review",
+            "brief": "drafts/seed-001/linkedin.media.md",
+            "render": {
+              "status": "ready_for_review",
+              "file": "drafts/seed-001/linkedin.png",
+              "publish_ratio": "1.91:1",
+              "publish_file": "drafts/seed-001/linkedin.publish.png"
+            }
+          }
+        }
+      },
+      "publish_manifest": "drafts/seed-001/PUBLISH.md"
     }
   ]
 }
