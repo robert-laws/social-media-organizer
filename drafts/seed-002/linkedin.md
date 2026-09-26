@@ -5,10 +5,10 @@ status: ready_for_review
 validator: PASS
 reviewer: PASS (independent subagent)
 variant: 0
-reviewer_flag: "'the difference is starting to show' passed at the edge — observation-shaped opinion, keep an eye on empirical drift"
+reviewer_flag: "'the difference is starting to show' passed at the edge — observation-shaped opinion; opening softened per PR review (was 'Most campuses now have an AI policy'), still one adjective away from an evidence claim — keep watching empirical drift"
 ---
 
-Most campuses now have an AI policy. Far fewer have AI infrastructure — and the difference is starting to show.
+Campuses are busy writing AI policies. Far fewer are building AI infrastructure — and the difference is starting to show.
 
 A policy tells people what's permitted. Infrastructure is what lets them act on it: faculty training that goes past a one-hour webinar, sandboxed tools where students can experiment without risk, staff whose actual job is answering 'is this a good use of the tool?'
 
