@@ -67,6 +67,62 @@
         }
       },
       "publish_manifest": "drafts/seed-001/PUBLISH.md"
+    },
+    {
+      "id": "seed-002",
+      "idea": "AI policy is not enough \u2014 campuses need practical AI literacy infrastructure, not just rules",
+      "image": null,
+      "triage": {
+        "decision": "generate for x, facebook, linkedin; skip instagram",
+        "reason": "institutional-leadership argument; weak fit for instagram's visual-personal register"
+      },
+      "platforms": {
+        "x": {
+          "status": "ready_for_review",
+          "draft": "drafts/seed-002/x.md",
+          "attempts": 1,
+          "media": {
+            "status": "ready_for_review",
+            "brief": "drafts/seed-002/x.media.md",
+            "render": {
+              "status": "todo",
+              "file": null
+            }
+          }
+        },
+        "facebook": {
+          "status": "ready_for_review",
+          "draft": "drafts/seed-002/facebook.md",
+          "attempts": 1,
+          "media": {
+            "status": "ready_for_review",
+            "brief": "drafts/seed-002/facebook.media.md",
+            "render": {
+              "status": "todo",
+              "file": null
+            }
+          }
+        },
+        "linkedin": {
+          "status": "ready_for_review",
+          "draft": "drafts/seed-002/linkedin.md",
+          "attempts": 1,
+          "media": {
+            "status": "ready_for_review",
+            "brief": "drafts/seed-002/linkedin.media.md",
+            "render": {
+              "status": "todo",
+              "file": null
+            }
+          }
+        },
+        "instagram": {
+          "status": "skipped",
+          "draft": null,
+          "attempts": 0,
+          "reason": "triage: weak platform fit"
+        }
+      }
     }
   ]
 }
